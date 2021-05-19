@@ -1,10 +1,10 @@
-all: update_index upload_charts
+all: package_charts upload_charts update_index
+
+package_charts:
+		for d in charts/*/; do cr package $$d --config config.yaml; done
 
 update_index:
-	cr index --owner gndra --git-repo rem-charts \
-		--charts-repo https://github.com/gndra/rem-charts \
-		--token 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
+	cr index --config config.yaml
 
 upload_charts:
-	cr upload --owner gndra --git-repo rem-charts \
-		--token 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
+	cr upload --config config.yaml

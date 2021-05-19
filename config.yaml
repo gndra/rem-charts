@@ -1,0 +1,11 @@
+owner: gndra
+git-repo: rem-charts
+token: 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
+charts-repo: https://github.com/gndra/rem-charts
+skip-existing: true
+push: true
+package-path: .deploy
+git-base-url: https://api.github.com/
+git-upload-url: https://uploads.github.com/
+pages-branch: helm-charts
+index-path: .charts
