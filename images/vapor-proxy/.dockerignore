@@ -1,0 +1,6 @@
+node_modules
+npm-debug.log
+k8s
+docker-compose.yml
+Dockerfile
+signt_platfotm_openapi_v3.yml

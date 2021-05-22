@@ -4,5 +4,5 @@ charts-repo: https://github.com/gndra/rem-charts
 skip-existing: true
 push: true
 package-path: .deploy
-pages-branch: helm-charts
+pages-branch: master
 index-path: .charts

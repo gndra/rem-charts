@@ -23,6 +23,10 @@ If release name contains chart name it will be used as a full name.
 {{- end }}
 {{- end }}
 
+{{- define "vapor-proxy.url" -}}
+{{- printf "http://%s_%s_svc_%g.mesh" .Release.Name .Release.Namespace .Values.service.port }}
+{{- end }}
+
 {{/*
 Create chart name and version as used by the chart label.
 */}}
@@ -48,15 +52,4 @@ Selector labels
 {{- define "vapor-proxy.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "vapor-proxy.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-{{- end }}
-
-{{/*
-Create the name of the service account to use
-*/}}
-{{- define "vapor-proxy.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "vapor-proxy.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
 {{- end }}

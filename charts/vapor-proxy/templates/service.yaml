@@ -4,8 +4,11 @@ metadata:
   name: {{ include "vapor-proxy.fullname" . }}
   labels:
     {{- include "vapor-proxy.labels" . | nindent 4 }}
+  annotations:
+    kuma.io/mesh: {{ .Values.mesh }}
+    {{ .Values.service.port }}.service.kuma.io/protocol: "http"
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.service.type | default "ClusterIP" }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: http

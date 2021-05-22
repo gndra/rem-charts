@@ -15,6 +15,7 @@ spec:
     metadata:
       {{- with .Values.podAnnotations }}
       annotations:
+        kuma.io/mesh: {{ .Values.mesh }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
@@ -24,7 +25,6 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "vapor-proxy.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -33,9 +33,14 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: PROXY_URL
+              value: {{ .Values.proxyUrl }}
+            - name: PORT
+              value: {{ .Values.image.port }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: {{ .Values.image.port }}
               protocol: TCP
           livenessProbe:
             httpGet:
