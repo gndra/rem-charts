@@ -38,6 +38,7 @@ spec:
               value: {{ .Values.proxyUrl }}
             - name: PORT
               value: {{ .Values.image.port }}
+            {{- toYaml .Values.image.extraEnv | nindent 10 }}
           ports:
             - name: http
               containerPort: {{ .Values.image.port }}
