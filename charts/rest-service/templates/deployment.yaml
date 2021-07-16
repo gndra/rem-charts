@@ -13,9 +13,9 @@ spec:
       {{- include "vapor-proxy.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
         kuma.io/mesh: {{ .Values.mesh }}
+      {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
@@ -37,20 +37,14 @@ spec:
             - name: PROXY_URL
               value: {{ .Values.proxyUrl }}
             - name: PORT
-              value: {{ .Values.image.port }}
-            {{- toYaml .Values.image.extraEnv | nindent 10 }}
+              value: {{ .Values.image.port | quote }}
+{{- if .Values.image.extraEnv }}
+{{ toYaml .Values.image.extraEnv | indent 12 }}
+{{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.image.port }}
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

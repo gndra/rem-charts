@@ -44,6 +44,19 @@ rules:
   mutators: []
   authorizer: noop
 
+# Only in case of neded for another rule, for example for public endpoints
+extraRules: {}
+#   upstream:
+#     url: http://httpbin.org
+#     preserveHost: false
+#     # stripPath: /
+#   match:
+#     url: https://example.com
+#     methods: ['POST', 'GET']
+#   authenticators: []
+#   mutators: []
+#   authorizer: noop
+
 service:
   type: ClusterIP
   port: 80

@@ -24,7 +24,7 @@ If release name contains chart name it will be used as a full name.
 {{- end }}
 
 {{- define "vapor-proxy.url" -}}
-{{- printf "http://%s_%s_svc_%g.mesh" .Release.Name .Release.Namespace .Values.service.port }}
+{{- printf "http://%s-%s_%s_svc_%g.mesh" .Release.Name .Chart.Name .Release.Namespace .Values.service.port }}
 {{- end }}
 
 {{/*

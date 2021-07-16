@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "vapor-proxy.fullname" . }}
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "vapor-proxy.labels" . | nindent 4 }}
   annotations:

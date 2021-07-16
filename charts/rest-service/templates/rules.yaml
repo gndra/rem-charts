@@ -2,7 +2,7 @@ apiVersion: "oathkeeper.ory.sh/v1alpha1"
 kind: Rule
 metadata:
   name: {{ include "vapor-proxy.fullname" . }}-access-rules
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ .Values.rules.namespace }}
 spec:
   upstream:
     url: {{ include "vapor-proxy.url" . }}
@@ -26,3 +26,35 @@ spec:
     {{- end }}
   authorizer:
     handler: {{ .Values.rules.authorizer }}
+
+{{- if .Values.extraRules }}
+---
+apiVersion: "oathkeeper.ory.sh/v1alpha1"
+kind: Rule
+metadata:
+  name: {{ include "vapor-proxy.fullname" . }}-extra-access-rules
+  namespace: {{ .Values.extraRules.namespace }}
+spec:
+  upstream:
+    url: {{ include "vapor-proxy.url" . }}
+    preserveHost: {{ .Values.extraRules.upstream.preserveHost }}
+    {{- if .Values.extraRules.upstream.stripPath }}
+    stripPath: {{ .Values.extraRules.upstream.stripPath }}
+    {{- end }}
+  match:
+    url: {{ .Values.extraRules.match.url }}
+    methods:
+      {{- range .Values.extraRules.match.methods }}
+      - {{ . }}
+      {{- end }}
+  authenticators:
+    {{- range .Values.extraRules.authenticators }}
+    - handler: {{ . | quote }}
+    {{- end }}
+  mutators:
+    {{- range .Values.extraRules.mutators }}
+    - handler: {{ . | quote }}
+    {{- end }}
+  authorizer:
+    handler: {{ .Values.extraRules.authorizer }}
+{{- end }}
