@@ -2,8 +2,18 @@ apiVersion: v1
 entries:
   rest-service:
   - apiVersion: v2
+    appVersion: 1.17.0
+    created: "2021-07-16T14:22:20.620699-05:00"
+    description: A Helm chart for Kubernetes
+    digest: 422a33ac96402863869969fb74809dcdd20171d464f9ebe8af7b6c9ed105fb96
+    name: rest-service
+    type: application
+    urls:
+    - https://github.com/gndra/rem-charts/releases/download/rest-service-0.3.1/rest-service-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-05-25T14:48:21.385563-05:00"
+    created: "2021-07-16T14:22:20.427695-05:00"
     description: A Helm chart for Kubernetes
     digest: 664f9841ab7b3eaf77d87163cbb8e0f7ab1c998ce794d2089f19df0cc13dfbda
     name: rest-service
@@ -11,25 +21,4 @@ entries:
     urls:
     - https://github.com/gndra/rem-charts/releases/download/rest-service-0.2.1/rest-service-0.2.1.tgz
     version: 0.2.1
-  vapor-proxy:
-  - apiVersion: v2
-    appVersion: 1.16.0
-    created: "2021-05-25T14:48:21.799948-05:00"
-    description: A Helm chart for Kubernetes
-    digest: a6ee8a92bc53d89572567f4a8e1a99926ede1b73e77b3ccde61f04c45c5bbc67
-    name: vapor-proxy
-    type: application
-    urls:
-    - https://github.com/gndra/rem-charts/releases/download/vapor-proxy-0.2.1/vapor-proxy-0.2.1.tgz
-    version: 0.2.1
-  - apiVersion: v2
-    appVersion: 1.16.0
-    created: "2021-05-25T14:48:21.623236-05:00"
-    description: A Helm chart for Kubernetes
-    digest: a6b3a00a674d852c2902be8683b66f62ba570770071dcf2ac607416191c2ee67
-    name: vapor-proxy
-    type: application
-    urls:
-    - https://github.com/gndra/rem-charts/releases/download/vapor-proxy-0.1.1/vapor-proxy-0.1.1.tgz
-    version: 0.1.1
-generated: "2021-05-25T14:48:21.799962-05:00"
+generated: "2021-07-16T14:22:20.620715-05:00"
