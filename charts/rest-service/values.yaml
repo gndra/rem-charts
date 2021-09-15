@@ -8,7 +8,7 @@ mesh: default
 proxyUrl: http://httpbin.org
 
 image:
-  repository: "us.gcr.io/gendra-services/http-proxy"
+  repository: "us.gcr.io/rem-tools-mx/rest-service"
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
