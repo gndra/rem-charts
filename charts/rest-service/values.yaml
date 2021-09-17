@@ -85,3 +85,12 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+timeout: {
+  enabled: false,
+  connect: 120s,
+  http: {
+    request: 120s,
+    idle: 3600s
+  }
+}

@@ -27,6 +27,10 @@ If release name contains chart name it will be used as a full name.
 {{- printf "http://%s-%s_%s_svc_%g.mesh" .Release.Name .Chart.Name .Release.Namespace .Values.service.port }}
 {{- end }}
 
+{{- define "vapor-proxy.serviceName" -}}
+{{- printf "%s-%s_%s_svc_%g" .Release.Name .Chart.Name .Release.Namespace .Values.service.port }}
+{{- end }}
+
 {{/*
 Create chart name and version as used by the chart label.
 */}}

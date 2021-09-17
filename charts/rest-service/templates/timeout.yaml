@@ -1,0 +1,19 @@
+{{- if .Values.timeout.enabled }}
+apiVersion: kuma.io/v1alpha1
+kind: Timeout
+mesh: system
+metadata:
+  name: {{ include "vapor-proxy.fullname" . }}-timeout
+spec:
+  sources:
+    - match:
+        kuma.io/service: "*"
+  destinations:
+    - match:
+        kuma.io/service: {{ include "vapor-proxy.serviceName" . }}
+  conf:
+    connectTimeout: {{ .Values.timeout.connect }}
+    http:
+      requestTimeout: {{ .Values.timeout.http.request }}
+      idleTimeout: {{ .Values.timeout.http.idle }}
+{{- end }}

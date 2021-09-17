@@ -5,9 +5,18 @@ const app = express()
 
 // app.use(express.json())
 
+const router = (req) => {
+  if (process.env.PLATFORM_SERVE) {
+    const user = req.headers['X-User']
+    return `https://${user}.${process.env.PLATFORM_SERVE}.rem.tools`
+  }
+  return process.env.PROXY_URL
+}
+
 app.use('/', createProxyMiddleware({
   target: process.env.PROXY_URL,
-  changeOrigin: true
+  changeOrigin: true,
+  router
 }));
 
 app.listen(process.env.PORT || 3000, () => {})
