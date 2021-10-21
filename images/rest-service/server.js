@@ -7,7 +7,8 @@ const app = express()
 
 const router = (req) => {
   if (process.env.PLATFORM_SERVE) {
-    const user = req.headers['X-User']
+    const user = req.headers['x-user']
+    if (!user) return process.env.PROXY_URL
     return `https://${user}.${process.env.PLATFORM_SERVE}.rem.tools`
   }
   return process.env.PROXY_URL
@@ -19,4 +20,6 @@ app.use('/', createProxyMiddleware({
   router
 }));
 
-app.listen(process.env.PORT || 3000, () => {})
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Server listening for request on port:", process.env.PORT || 3000)
+})
