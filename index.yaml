@@ -3,7 +3,17 @@ entries:
   rest-service:
   - apiVersion: v2
     appVersion: 1.17.0
-    created: "2021-11-28T19:59:26.552393-06:00"
+    created: "2022-01-17T16:08:33.746917-06:00"
+    description: A Helm chart for Kubernetes
+    digest: 7820e61fa8225d50325c8c92b05acfaea6227f96fdcd463e0c5199d9f63b8ed1
+    name: rest-service
+    type: application
+    urls:
+    - https://github.com/gndra/rem-charts/releases/download/rest-service-0.5.1/rest-service-0.5.1.tgz
+    version: 0.5.1
+  - apiVersion: v2
+    appVersion: 1.17.0
+    created: "2022-01-17T16:08:33.600997-06:00"
     description: A Helm chart for Kubernetes
     digest: a8c848436bb274383afffe14f20e20b8f3b1661e5916ced8ec3c53b86d63388f
     name: rest-service
@@ -13,7 +23,7 @@ entries:
     version: 0.4.1
   - apiVersion: v2
     appVersion: 1.17.0
-    created: "2021-11-28T19:59:26.40566-06:00"
+    created: "2022-01-17T16:08:33.440073-06:00"
     description: A Helm chart for Kubernetes
     digest: 422a33ac96402863869969fb74809dcdd20171d464f9ebe8af7b6c9ed105fb96
     name: rest-service
@@ -23,7 +33,7 @@ entries:
     version: 0.3.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-11-28T19:59:26.246478-06:00"
+    created: "2022-01-17T16:08:33.305894-06:00"
     description: A Helm chart for Kubernetes
     digest: 664f9841ab7b3eaf77d87163cbb8e0f7ab1c998ce794d2089f19df0cc13dfbda
     name: rest-service
@@ -31,4 +41,4 @@ entries:
     urls:
     - https://github.com/gndra/rem-charts/releases/download/rest-service-0.2.1/rest-service-0.2.1.tgz
     version: 0.2.1
-generated: "2021-11-28T19:59:26.552407-06:00"
+generated: "2022-01-17T16:08:33.746954-06:00"
