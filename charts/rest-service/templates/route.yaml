@@ -1,0 +1,14 @@
+apiVersion: {{ .Values.route.apiVersion }}
+kind: ApisixRoute
+metadata:
+  name: {{ include "vapor-proxy.fullname" . }}-route
+  namespace: {{ .Release.Namespace }}
+spec:
+  {{ if .Values.route.http }}
+    http:
+{{ toYaml .Values.route.http | indent 6 }}
+  {{ end }}
+  {{ if .Values.route.stream }}
+    stream:
+{{ toYaml .Values.route.stream | indent 6 }}
+  {{ end }}

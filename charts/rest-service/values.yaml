@@ -32,30 +32,15 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-rules:
-  upstream:
-    url: http://httpbin.org
-    preserveHost: false
-    # stripPath: /
-  match:
-    url: https://example.com
-    methods: ['POST', 'GET']
-  authenticators: []
-  mutators: []
-  authorizer: noop
-
-# Only in case of neded for another rule, for example for public endpoints
-extraRules: {}
-#   upstream:
-#     url: http://httpbin.org
-#     preserveHost: false
-#     # stripPath: /
-#   match:
-#     url: https://example.com
-#     methods: ['POST', 'GET']
-#   authenticators: []
-#   mutators: []
-#   authorizer: noop
+route:
+  apiVersion: apisix.apache.org/v2beta2
+  http:
+    - name: test
+      backends: []
+      match:
+        hosts: []
+        paths: []
+  stream: []
 
 service:
   type: ClusterIP
