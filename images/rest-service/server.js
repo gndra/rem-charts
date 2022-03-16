@@ -21,11 +21,21 @@ const pathRewrite = (path, req) => {
   return path.replace(new RegExp(`/${user}`), '')
 }
 
+const onError = (err, req, res, target) => {
+  res.writeHead(403, {
+    'Content-Type': 'application/json'
+  })
+  res.end(JSON.stringify({
+    message: 'Invalid route or access'
+  }))
+}
+
 app.use('/', createProxyMiddleware({
   target: process.env.PROXY_URL,
   changeOrigin: true,
   pathRewrite,
-  router
+  router,
+  onError
 }));
 
 app.listen(process.env.PORT || 3000, () => {
