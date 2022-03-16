@@ -16,7 +16,7 @@ const router = (req) => {
 }
 
 const pathRewrite = (path, req) => {
-  if (req.headers['x-user']) return path
+  if (req.headers['x-user'] || !process.env.PLATFORM_SERVE) return path
   const user = path.split('/')[1]
   return path.replace(new RegExp(`/${user}`), '')
 }
