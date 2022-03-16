@@ -7,7 +7,7 @@ const app = express()
 
 const router = (req) => {
   if (process.env.PLATFORM_SERVE) {
-    const user = req.headers['x-user']
+    const user = req.headers['x-user'] || req.path.split('/')[1]
     if (!user) return process.env.PROXY_URL
     const extraPath = process.env.EXTRA_PATH || ''
     return `https://${user}-${process.env.PLATFORM_SERVE}.rem.tools${extraPath}`
