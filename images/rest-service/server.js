@@ -15,9 +15,16 @@ const router = (req) => {
   return process.env.PROXY_URL
 }
 
+const pathRewrite = (path, req) => {
+  if (req.headers['x-user']) return path
+  const user = path.split('/')[1]
+  return path.replace(new RegExp(`/${user}`), '')
+}
+
 app.use('/', createProxyMiddleware({
   target: process.env.PROXY_URL,
   changeOrigin: true,
+  pathRewrite,
   router
 }));
 
